@@ -74,7 +74,9 @@ EOF  all  count  create  destroy  help  quit  show  update
 
     def test_help_commands(self):
         """Test the 'help' command for all commands."""
-        commands = ["EOF", "quit", "create", "show", "destroy", "all", "count", "update"]
+        commands = [
+            "EOF",
+            "quit", "create", "show", "destroy", "all", "count", "update"]
         for command in commands:
             self.test_help_command(command)
 
@@ -185,7 +187,8 @@ EOF  all  count  create  destroy  help  quit  show  update
         self.assertEqual(msg, "** no instance found **")
 
     def help_test_show_advanced(self, classname):
-        """Helper method for testing the 'show' command using advanced syntax."""
+        """Helper method for testing the 'show'
+        command using advanced syntax."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(f"create {classname}")
         uid = f.getvalue()[:-1]
@@ -266,7 +269,8 @@ EOF  all  count  create  destroy  help  quit  show  update
             self.help_test_do_destroy_advanced(classname)
 
     def help_test_do_destroy_advanced(self, classname):
-        """Helper method for testing the 'destroy' command using advanced syntax."""
+        """Helper method for testing the 'destroy'
+        command using advanced syntax."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(f"create {classname}")
         uid = f.getvalue()[:-1]
@@ -332,7 +336,8 @@ EOF  all  count  create  destroy  help  quit  show  update
             self.help_test_do_all_advanced(classname)
 
     def help_test_do_all_advanced(self, classname):
-        """Helper method for testing the 'all' command using advanced syntax."""
+        """Helper method for testing the 'all' command
+        using advanced syntax."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(f"create {classname}")
         uid = f.getvalue()[:-1]
@@ -380,7 +385,8 @@ EOF  all  count  create  destroy  help  quit  show  update
             self.help_test_do_count_advanced(classname)
 
     def help_test_do_count_advanced(self, classname):
-        """Helper method for testing the 'count' command using advanced syntax."""
+        """Helper method for testing the 'count' command
+        using advanced syntax."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(f"create {classname}")
         uid = f.getvalue()[:-1]
@@ -412,7 +418,8 @@ EOF  all  count  create  destroy  help  quit  show  update
 
         for attribute, value in self.test_random_attributes.items():
             with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().onecmd(f"update {classname} {uid} {attribute} {value}")
+                HBNBCommand().onecmd(
+                    f"update {classname} {uid} {attribute} {value}")
 
             with patch('sys.stdout', new=StringIO()) as f:
                 HBNBCommand().onecmd(f"show {classname} {uid}")
@@ -447,7 +454,8 @@ EOF  all  count  create  destroy  help  quit  show  update
         self.assertEqual(msg, "** value missing **")
 
     def help_test_do_update_advanced(self, classname):
-        """Helper method for testing the 'update' command using advanced syntax."""
+        """Helper method for testing the 'update' command
+        using advanced syntax."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(f"create {classname}")
         uid = f.getvalue()[:-1]
@@ -455,7 +463,8 @@ EOF  all  count  create  destroy  help  quit  show  update
 
         for attribute, value in self.test_random_attributes.items():
             with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().onecmd(f"{classname}.update('{uid}', '{attribute}', '{value}')")
+                HBNBCommand().onecmd(
+                    f"{classname}.update('{uid}', '{attribute}', '{value}')")
 
             with patch('sys.stdout', new=StringIO()) as f:
                 HBNBCommand().onecmd(f"show {classname} {uid}")
@@ -491,7 +500,8 @@ EOF  all  count  create  destroy  help  quit  show  update
 
     def classes(self):
         """Get the list of classes to test."""
-        return ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+        return [
+            "BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
 
 if __name__ == "__main__":
